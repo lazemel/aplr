@@ -13,7 +13,8 @@ class ImportJsonData extends Command
     public function handle()
     {
         // URL to your JSON file on GitHub
-        $url = 'https://raw.githubusercontent.com/lazemel/aplr/main/Coin_Search_Engine%202/Coin_Search_Engine%202/RCNA%20Text%20Source%20Files/Coin-Text/Index2014/April_2014.json';
+        $url = 'https://raw.githubusercontent.com/lazemel/aplr/refs/heads/main/Coin_Search_Engine%202/Coin_Search_Engine%202/RCNA%20Text%20Source%20Files/Coin-Text/Index2014/September_2014.json';
+
         // Fetch the JSON data from GitHub
         $json = file_get_contents($url);
 
