@@ -175,7 +175,25 @@ return [
         ],
         // 'max_total_results' => env('TYPESENSE_MAX_TOTAL_RESULTS', 1000),
         'model-settings' => [
-            // Define your model settings here if needed
+            App\Models\Document::class => [
+                'collection-schema' => [
+                    'fields' => [
+                        [
+                            'name' => 'id',
+                            'type' => 'string',
+                        ],
+                        [
+                            'name' => 'title',
+                            'type' => 'string',
+                        ],
+                        // Add any other fields that you want to be searchable here
+                    ],
+                    'default_sorting_field' => 'created_at', // or any other field that makes sense for sorting
+                ],
+                'search-parameters' => [
+                    'query_by' => 'title', // Specify the fields to search against
+                ],
+            ],
         ],
     ],
 
