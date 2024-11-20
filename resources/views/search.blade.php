@@ -9,7 +9,7 @@
 </head>
 
 <body class="flex items-center justify-center min-h-screen bg-gray-100">
-    <form action="{{ route('documents.search') }}" method="GET" class="max-w-lg w-full">
+    <form action="{{ route('documents.search', [], true) }}" method="GET" class="max-w-lg w-full">
         <div class="flex">
             <input type="search" name="query" placeholder="Search Mockups, Logos, Design Templates..." required
                 class="block p-4 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-blue-500 placeholder-gray-500" />
