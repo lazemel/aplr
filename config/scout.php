@@ -151,51 +151,51 @@ return [
     |
     */
 
-    'typesense' => [
-        'client-settings' => [
-            'api_key' => env('TYPESENSE_API_KEY', 'N5ZSOqIz6oW1or5STq23VCnr3lOWuHQM'), // Use your Admin API Key
-            'nodes' => [
-                [
-                    'host' => env('TYPESENSE_HOST', 'bugw8ds14xa2o69vp-1.a1.typesense.net'), // Use your node
-                    'port' => env('TYPESENSE_PORT', '443'), // Secure port
-                    'path' => env('TYPESENSE_PATH', ''),
-                    'protocol' => env('TYPESENSE_PROTOCOL', 'https'), // Use HTTPS
-                ],
-            ],
-            'nearest_node' => [
+'typesense' => [
+    'client-settings' => [
+        'api_key' => env('TYPESENSE_API_KEY'),
+        'nodes' => [
+            [
                 'host' => env('TYPESENSE_HOST', 'bugw8ds14xa2o69vp-1.a1.typesense.net'),
                 'port' => env('TYPESENSE_PORT', '443'),
                 'path' => env('TYPESENSE_PATH', ''),
                 'protocol' => env('TYPESENSE_PROTOCOL', 'https'),
             ],
-            'connection_timeout_seconds' => env('TYPESENSE_CONNECTION_TIMEOUT_SECONDS', 2),
-            'healthcheck_interval_seconds' => env('TYPESENSE_HEALTHCHECK_INTERVAL_SECONDS', 30),
-            'num_retries' => env('TYPESENSE_NUM_RETRIES', 3),
-            'retry_interval_seconds' => env('TYPESENSE_RETRY_INTERVAL_SECONDS', 1),
         ],
-        // 'max_total_results' => env('TYPESENSE_MAX_TOTAL_RESULTS', 1000),
-        'model-settings' => [
-            App\Models\Document::class => [
-                'collection-schema' => [
-                    'fields' => [
-                        [
-                            'name' => 'id',
-                            'type' => 'string',
-                        ],
-                        [
-                            'name' => 'title',
-                            'type' => 'string',
-                        ],
-                        // Add any other fields that you want to be searchable here
+        'nearest_node' => [
+            'host' => env('TYPESENSE_HOST', 'bugw8ds14xa2o69vp-1.a1.typesense.net'),
+            'port' => env('TYPESENSE_PORT', '443'),
+            'path' => env('TYPESENSE_PATH', ''),
+            'protocol' => env('TYPESENSE_PROTOCOL', 'https'),
+        ],
+        'connection_timeout_seconds' => env('TYPESENSE_CONNECTION_TIMEOUT_SECONDS', 2),
+        'healthcheck_interval_seconds' => env('TYPESENSE_HEALTHCHECK_INTERVAL_SECONDS', 30),
+        'num_retries' => env('TYPESENSE_NUM_RETRIES', 3),
+        'retry_interval_seconds' => env('TYPESENSE_RETRY_INTERVAL_SECONDS', 1),
+    ],
+    'model-settings' => [
+        App\Models\Document::class => [
+            'collection-schema' => [
+                'fields' => [
+                    [
+                        'name' => 'id',
+                        'type' => 'string',
                     ],
-                    'default_sorting_field' => 'created_at', // or any other field that makes sense for sorting
+                    [
+                        'name' => 'title',
+                        'type' => 'string',
+                    ],
+                    // Add any other fields that you want to be searchable here
                 ],
-                'search-parameters' => [
-                    'query_by' => 'title', // Specify the fields to search against
-                ],
+                'default_sorting_field' => 'created_at', // or any other field that makes sense for sorting
+            ],
+            'search-parameters' => [
+                'query_by' => 'title', // Specify the fields to search against
             ],
         ],
     ],
+],
+
 
 
 ];
