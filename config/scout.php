@@ -153,7 +153,7 @@ return [
 
 'typesense' => [
     'client-settings' => [
-        'api_key' => env('TYPESENSE_API_KEY'),
+        'api_key' => env('TYPESENSE_API_KEY', ''),
         'nodes' => [
             [
                 'host' => env('TYPESENSE_HOST', 'bugw8ds14xa2o69vp-1.a1.typesense.net'),
