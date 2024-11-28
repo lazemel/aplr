@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/documents/search', [DocumentController::class, 'search'])->name('documents.search');
+
+Route::get('/documents/{document}', [DocumentController::class, 'show'])->name('documents.show');

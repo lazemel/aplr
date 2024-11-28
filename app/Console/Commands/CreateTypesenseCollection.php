@@ -27,13 +27,17 @@ class CreateTypesenseCollection extends Command
 
         // Define the collection schema
         $collectionSchema = [
-            'name' => 'documents',
+            'name' => 'documents2',
             'fields' => [
                 ['name' => 'id', 'type' => 'string'],
                 ['name' => 'title', 'type' => 'string'],
-                ['name' => 'created_at', 'type' => 'int64'], // Include created_at for sorting
+                ['name' => 'paragraphs', 'type' => 'string[]', 'optional' => true],
+                ['name' => 'page_numbers', 'type' => 'int32[]'],
+                ['name' => 'source_type', 'type' => 'string', 'facet' => true],
+                ['name' => 'created_at', 'type' => 'int64'],
+                ['name' => 'updated_at', 'type' => 'int64'],
             ],
-            'default_sorting_field' => 'created_at', // Change this to a sortable field
+            'default_sorting_field' => 'created_at',
         ];
 
         try {

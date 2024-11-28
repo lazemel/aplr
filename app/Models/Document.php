@@ -10,17 +10,42 @@ class Document extends Model
 {
     use HasFactory, Searchable;
 
-    protected $casts = [
-        'id' => 'string', // Ensure the `id` is cast to a string for Typesense compatibility
+    protected $fillable = [
+        'title',
+        'paragraphs',
+        'page_numbers',
+        'source_type'
     ];
 
-    // Define the fields you want to be searchable
+    protected $casts = [
+        'id' => 'string',
+        'page_numbers' => 'array',
+        'paragraphs' => 'array'
+    ];
+
     public function toSearchableArray()
     {
-        return [
+        $searchable = [
             'id' => (string) $this->id,
             'title' => $this->title,
-            'created_at' => $this->created_at->timestamp, // Use timestamp format
+            'page_numbers' => $this->page_numbers,
+            'created_at' => $this->created_at->timestamp,
         ];
+
+        if (!empty($this->paragraphs)) {
+            $searchable['paragraphs'] = $this->paragraphs;
+        }
+
+        return $searchable;
+    }
+
+    public function pageNumbers()
+    {
+        return $this->hasMany(PageNumber::class);
+    }
+
+    public function searchableAs()
+    {
+        return 'documents2';
     }
 }

@@ -185,12 +185,33 @@ return [
                         'name' => 'title',
                         'type' => 'string',
                     ],
-                    // Add any other fields that you want to be searchable here
+                    [
+                        'name' => 'paragraphs',
+                        'type' => 'string[]',
+                        'optional' => true,
+                    ],
+                    [
+                        'name' => 'page_numbers',
+                        'type' => 'int[]',
+                    ],
+                    [
+                        'name' => 'source_type',
+                        'type' => 'string',
+                        'facet' => true,
+                    ],
+                    [
+                        'name' => 'created_at',
+                        'type' => 'int64',
+                    ],
+                    [
+                        'name' => 'updated_at',
+                        'type' => 'int64',
+                    ],
                 ],
-                'default_sorting_field' => 'created_at', // or any other field that makes sense for sorting
+                'default_sorting_field' => 'created_at',
             ],
             'search-parameters' => [
-                'query_by' => 'title', // Specify the fields to search against
+                'query_by' => 'title,paragraphs',
             ],
         ],
     ],

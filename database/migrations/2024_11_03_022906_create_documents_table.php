@@ -9,11 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->json('paragraphs')->nullable();
+            $table->json('page_numbers');
+            $table->string('source_type');
             $table->timestamps();
         });
     }
