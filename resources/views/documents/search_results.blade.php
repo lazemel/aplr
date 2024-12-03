@@ -57,7 +57,15 @@
                         
                         @if($document->paragraphs)
                             <p class="text-gray-600 mb-2">
-                                {{ Str::limit(is_array($document->paragraphs) ? implode(' ', $document->paragraphs) : $document->paragraphs, 200) }}
+                                @php
+                                    if (is_array($document->paragraphs)) {
+                                        $paragraphText = implode(' ', $document->paragraphs);
+                                    } else {
+                                        $paragraphText = $document->paragraphs;
+                                    }
+                                    $limitedText = Str::limit($paragraphText, 200);
+                                @endphp
+                                {{ $limitedText }}
                             </p>
                         @endif
 
